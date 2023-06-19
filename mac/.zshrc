@@ -1,7 +1,12 @@
 # Oy-My-Zsh
 export ZSH=$HOME/jason/libs/ohmyzsh
 #ZSH_THEME="robbyrussell"
+#ZSH_THEME="refined"
+#ZSH_THEME="bureau"
 ZSH_THEME="amuse"
+#ZSH_THEME="nicoulaj"
+#ZSH_THEME="intheloop"
+#ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell", "amuse", "intheloop", "nicoulaj" )
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -97,9 +102,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export JAVA_HOME="/Users/kodev/jason/libs/jdk/Contents/Home"
 
+
+export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
+
+export PATH="$HOME/jason/libs/mongosh/bin:$PATH"
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/Users/kodev/.pyenv/shims:$PATH"
+export PATH="$HOME/.pyenv/shims:$PATH"
 export PATH="/opt/homebrew/opt/node@18/bin:$PATH"

@@ -4,6 +4,7 @@ set encoding=UTF-8
 autocmd filetype c nnoremap <F9> :w <bar> !gcc % -o %:r<CR>
 autocmd filetype c nnoremap <F10> :!./%:r <CR>
 autocmd filetype cpp nnoremap <F9> :w <bar> !g++ -std=c++17 % -o %:r<CR>
+autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
 "autocmd filetype cpp nnoremap <F9> :w <bar> !g++ % -o %:r<CR> autocmd filetype cpp nnoremap <F10> :!./%:r <CR>
 autocmd filetype java nnoremap <F10> :w <bar> !java % <CR>
 autocmd filetype javascript nnoremap <F10> :w <bar> !clear && node % <CR>
@@ -13,17 +14,20 @@ autocmd FileType python nnoremap <buffer> <F10> :w<CR>:exec '!python3' shellesca
 "-------------- Plugin -------------------- 
 call plug#begin()
 
+" essential
 Plug 'preservim/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
-
-
+Plug 'sheerun/vim-polyglot'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
-Plug 'sheerun/vim-polyglot'
 
-" theme
-Plug 'tomasiser/vim-code-dark' 
+" themes
+Plug 'tomasiser/vim-code-dark'
+"Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
@@ -31,7 +35,6 @@ Plug '~/my-prototype-plugin'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
-
 
 "-------------line number-----------------"
 set number relativenumber
@@ -63,21 +66,27 @@ syntax on
 set background=dark
 "set background=light
 "set t_Co=256
+"set t_Co=16
 
 
 "color evening
 "color koehler
 "color slate
 "color blue
-color codedark
 
 "colorscheme gruvbox
 "colorscheme onedark
+"colorscheme molokai
+"colorscheme github
+"color jellybeans
+"colorscheme solarized8_high
+colorscheme codedark
 
 "highlight Comment ctermfg=lightgrey
-"highlight LineNr ctermfg=grey
+highlight LineNr ctermfg=gray
+"highlight LineNr ctermfg=lightgray
 
-set fillchars=stl:^,stlnc:=,vert:\ ,fold:-,diff:-
+set fillchars=vert:\ ,fold:-,diff:-
 highlight VertSplit guibg=Orange guifg=black ctermbg=6 ctermfg=0
 
 "--------------Vim no Sound -------------"
@@ -92,3 +101,7 @@ nmap <F1> :NERDTreeToggle<CR>
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
 let g:closetag_emptyTags_caseSensitive = 1
 
+
+let g:airline_theme="minimalist"
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#enabled = 1
