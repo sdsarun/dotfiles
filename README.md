@@ -5,7 +5,9 @@
 /jason/libs/config
 ```
 ## Commands
-To create a symlink at `/usr/bin/bar` which references the original file `/opt/foo`, use:
+To create a symlink
 ```
-ln -s /opt/foo /usr/bin/bar
+ln -s [Source_File_Path] [Symbolic_Link_Path]
+// or
+ln -s [Source_Directory_Path] [Symbolic_Link_Destination_Path]
 ```
