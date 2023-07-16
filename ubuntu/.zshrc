@@ -1,6 +1,7 @@
 # Oy-My-Zsh
 export ZSH=$HOME/jason/libs/ohmyzsh
-ZSH_THEME="amuse"
+#ZSH_THEME="amuse"
+ZSH_THEME="avit"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,8 +73,11 @@ ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+alias vi="vim"
+alias ls="exa"
 
 # export MANPATH="/usr/local/man:$MANPATH"
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -96,3 +100,18 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# set PATH for runable program e.g youtube downloader
+export JASON="$HOME/jason/libs"
+
+# set PATH for developer environment
+export NODEJS="$JASON/nodejs"
+export PYENV="$JASON/pyenv"
+export DOTNET="$JASON/dotnet"
+
+# export PATHs
+export PATH="$JASON/bin:$PATH"
+export PATH="$NODEJS/bin:$PATH"
+export PATH="$PYENV/bin:$PATH"
+export PATH="$DOTNET:$PATH"
+export PATH="$HOME/.pyenv/shims:$PATH" # pyenv_root path
