@@ -26,8 +26,8 @@ Plug 'alvan/vim-closetag'
 " themes
 Plug 'tomasiser/vim-code-dark'
 "Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
@@ -102,6 +102,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.jsx'
 let g:closetag_emptyTags_caseSensitive = 1
 
 
-let g:airline_theme="minimalist"
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme="minimalist"
+"let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#tabline#enabled = 1

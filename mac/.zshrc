@@ -4,6 +4,7 @@ export ZSH=$HOME/jason/libs/ohmyzsh
 #ZSH_THEME="refined"
 #ZSH_THEME="bureau"
 ZSH_THEME="amuse"
+#ZSH_THEME="avit"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="intheloop"
 #ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell", "amuse", "intheloop", "nicoulaj" )
@@ -102,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+#alias ls="exa"
 
 export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
 
