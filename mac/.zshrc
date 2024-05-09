@@ -104,6 +104,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #alias ls="exa"
+# Add this to your .zshrc file
+vs() {
+  if [ -z "$1" ]; then
+    profile="Default"
+    directory="."
+  elif [ -z "$2" ]; then
+    profile="$1"
+    directory="."
+  else
+    profile="$1"
+    directory="$2"
+  fi
+  
+  code --profile "$profile" "$directory"
+}
 
 export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
 
