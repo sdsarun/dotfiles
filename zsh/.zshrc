@@ -1,7 +1,14 @@
+
 # Oy-My-Zsh
 export ZSH=$HOME/jason/libs/ohmyzsh
-#ZSH_THEME="amuse"
-ZSH_THEME="avit"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="refined"
+#ZSH_THEME="bureau"
+ZSH_THEME="amuse"
+#ZSH_THEME="avit"
+#ZSH_THEME="nicoulaj"
+#ZSH_THEME="intheloop"
+#ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell", "amuse", "intheloop", "nicoulaj" )
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -66,6 +73,10 @@ ZSH_THEME="avit"
 
 plugins=(
   git
+  tmux
+  docker
+  docker-compose
+  zsh-autosuggestions
 )
 
 ZSH_DISABLE_COMPFIX=true
@@ -73,11 +84,8 @@ ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-alias vi="vim"
-alias ls="exa"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -91,6 +99,20 @@ alias ls="exa"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+vs() {
+  if [ -z "$1" ]; then
+    profile="Default"
+    directory="."
+  elif [ -z "$2" ]; then
+    profile="$1"
+    directory="."
+  else
+    profile="$1"
+    directory="$2"
+  fi
+  
+  code --profile "$profile" "$directory"
+}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -100,18 +122,29 @@ alias ls="exa"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#alias ls="exa"
+alias cat="bat"
+alias python="python3"
+alias pip="pip3"
+alias lzd="lazydocker"
+alias lzg="lazygit"
 
-# set PATH for runable program e.g youtube downloader
-export JASON="$HOME/jason/libs"
+#export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
 
-# set PATH for developer environment
-export NODEJS="$JASON/nodejs"
-export PYENV="$JASON/pyenv"
-export DOTNET="$JASON/dotnet"
+#export PATH="$HOME/jason/libs/mongosh/bin:$PATH"
+#export PATH="$JAVA_HOME/bin:$PATH"
+#export PATH="/opt/homebrew/bin:$PATH"
+#export PATH="$HOME/.pyenv/shims:$PATH"
+#export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
 
-# export PATHs
-export PATH="$JASON/bin:$PATH"
-export PATH="$NODEJS/bin:$PATH"
-export PATH="$PYENV/bin:$PATH"
-export PATH="$DOTNET:$PATH"
-export PATH="$HOME/.pyenv/shims:$PATH" # pyenv_root path
+export NVM_DIR="$HOME/.nvm"
+export PATH="$HOME/.local/bin:$PATH"
+#. $(brew --prefix nvm)/nvm.sh
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
