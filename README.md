@@ -1,9 +1,5 @@
 # config
 
-## Path
-```
-/jason/libs/config
-```
 ## Symlink
 To create a symlink
 ```
