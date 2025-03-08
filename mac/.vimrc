@@ -18,7 +18,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'kien/ctrlp.vim'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag'
