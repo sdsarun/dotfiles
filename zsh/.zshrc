@@ -104,21 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# vscode 
-vs() {
-  if [ -z "$1" ]; then
-    profile="Default"
-    directory="."
-  elif [ -z "$2" ]; then
-    profile="$1"
-    directory="."
-  else
-    profile="$1"
-    directory="$2"
-  fi
-  
-  code --profile "$profile" "$directory"
-}
+# ############## ALIAS ##############
 
 alias cat="bat"
 alias python="python3"
@@ -126,28 +112,11 @@ alias pip="pip3"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
+# ############## EXPORTS ##############
+
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-vs() {
-  if [ -z "$1" ]; then
-    profile="Default"
-    directory="."
-  elif [ -z "$2" ]; then
-    profile="$1"
-    directory="."
-  else
-    profile="$1"
-    directory="$2"
-  fi
-
-  code --profile "$profile" "$directory"
-}
-
-if command -v ngrok &>/dev/null; then
-	eval "$(ngrok completion)"
-fi
 
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
@@ -176,18 +145,40 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # go
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+
+# docker The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/kodev/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# sdkman THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ############## CUSTOM FUNCTIONS ##############
+
+vs() {
+  if [ -z "$1" ]; then
+    profile="Default"
+    directory="."
+  elif [ -z "$2" ]; then
+    profile="$1"
+    directory="."
+  else
+    profile="$1"
+    directory="$2"
+  fi
+
+  code --profile "$profile" "$directory"
+}
+
+if command -v ngrok &>/dev/null; then
+	eval "$(ngrok completion)"
+fi
