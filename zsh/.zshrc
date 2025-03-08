@@ -120,38 +120,74 @@ vs() {
   code --profile "$profile" "$directory"
 }
 
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias ls="exa"
 alias cat="bat"
 alias python="python3"
 alias pip="pip3"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
-#export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
-
-#export PATH="$HOME/jason/libs/mongosh/bin:$PATH"
-#export PATH="$JAVA_HOME/bin:$PATH"
-#export PATH="/opt/homebrew/bin:$PATH"
-#export PATH="$HOME/.pyenv/shims:$PATH"
-#export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.local/bin:$PATH"
-#. $(brew --prefix nvm)/nvm.sh
-
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# sdkman (java)
-#export SDKMAN_DIR="$HOME/.sdkman"
-#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+vs() {
+  if [ -z "$1" ]; then
+    profile="Default"
+    directory="."
+  elif [ -z "$2" ]; then
+    profile="$1"
+    directory="."
+  else
+    profile="$1"
+    directory="$2"
+  fi
 
-# goenv
-#export GOENV_ROOT="$HOME/.goenv"
-#export PATH="$GOENV_ROOT/bin:$PATH"
-#eval "$(goenv init -)"
-#export PATH="$GOROOT/bin:$PATH"
-#export PATH="$PATH:$GOPATH/bin"
+  code --profile "$profile" "$directory"
+}
+
+if command -v ngrok &>/dev/null; then
+	eval "$(ngrok completion)"
+fi
+
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.pyenv/shims:$PATH"
+export PATH="$HOME/jason/libs/go/bin:$PATH"
+
+# readline
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
+
+# sqlite
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
+
+eval export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kodev/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
