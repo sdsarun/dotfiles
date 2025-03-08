@@ -3,10 +3,14 @@ export ZSH=$HOME/jason/libs/ohmyzsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="refined"
 #ZSH_THEME="bureau"
-ZSH_THEME="amuse"
-#ZSH_THEME="avit"
+#ZSH_THEME="amuse"
+#ZSH_THEME="dstufft"
+ZSH_THEME="avit"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="intheloop"
+#ZSH_THEME="kardan"
+#ZSH_THEME="nicoulaj"
+#ZSH_THEME="refined"
 #ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell", "amuse", "intheloop", "nicoulaj" )
 
 # Set list of themes to pick from when loading at random
@@ -72,6 +76,8 @@ ZSH_THEME="amuse"
 
 plugins=(
   git
+  tmux
+  zsh-autosuggestions
 )
 
 ZSH_DISABLE_COMPFIX=true
@@ -103,12 +109,73 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#alias ls="exa"
+# Add this to your .zshrc file
+alias cat="bat"
+alias lzd="lazydocker"
+alias lzg="lazygit"
 
-export JAVA_HOME="$HOME/jason/libs/jdk/Contents/Home"
+vs() {
+  if [ -z "$1" ]; then
+    profile="Default"
+    directory="."
+  elif [ -z "$2" ]; then
+    profile="$1"
+    directory="."
+  else
+    profile="$1"
+    directory="$2"
+  fi
+
+  code --profile "$profile" "$directory"
+}
+
+if command -v ngrok &>/dev/null; then
+	eval "$(ngrok completion)"
+fi
 
 export PATH="$HOME/jason/libs/mongosh/bin:$PATH"
-export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PATH="$HOME/jason/libs/go/bin:$PATH"
+
+# NodeJS
+#export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+
+# readline
+export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
+
+# sqlite
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
+
+eval export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kodev/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
