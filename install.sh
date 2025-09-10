@@ -1,5 +1,5 @@
 #!/bin/bash
-DOTVERSE=~/dotverse
+DOTVERSE=~/.dotverse
 
 ln -sf $DOTVERSE/zsh/.zshrc ~/.zshrc
 ln -sf $DOTVERSE/tmux/.tmux.conf ~/.tmux.conf

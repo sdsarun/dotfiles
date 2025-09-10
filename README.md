@@ -1,5 +1,10 @@
 # config
 
+# Install
+```
+git clone https://github.com/sdsarun/dotfiles.git ~/.dotverse
+```
+
 ## Symlink
 To create a symlink
 ```
