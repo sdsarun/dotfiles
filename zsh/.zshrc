@@ -1,6 +1,6 @@
 
 # Oy-My-Zsh
-export ZSH=$HOME/jason/libs/ohmyzsh
+export ZSH=$HOME/dev-env/dotfiles/zsh/ohmyzsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="refined"
 #ZSH_THEME="bureau"
@@ -74,6 +74,8 @@ ZSH_THEME="avit"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+
 
 plugins=(
   git
@@ -105,19 +107,17 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ############## ALIAS ##############
-
-alias cat="bat"
 alias python="python3"
 alias pip="pip3"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
+
+# special for brew
+alias brew='sudo -Hu kodev brew'
+
+
 # ############## EXPORTS ##############
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.pyenv/shims:$PATH"
 export PATH="$HOME/jason/libs/go/bin:$PATH"
@@ -133,13 +133,6 @@ export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
 
-eval export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -151,12 +144,6 @@ export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-
-# docker The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/kodev/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
 # sdkman THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -182,3 +169,17 @@ vs() {
 if command -v ngrok &>/dev/null; then
 	eval "$(ngrok completion)"
 fi
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/developer/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# pnpm
+export PNPM_HOME="/Users/developer/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
