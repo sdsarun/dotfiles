@@ -40,10 +40,11 @@
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
     "font_size": 12.0,
-    "line_height": { "custom": 1 }
+    "line_height": { "custom": 1.1 },
+    "font_fallbacks": ["Menlo", "Monaco", ".ZedMono"]
   },
   "project_panel": {
-    "indent_size": 12.0,
+    "indent_size": 14,
     "git_status": true,
     "folder_icons": true,
     "file_icons": true,
@@ -52,6 +53,7 @@
     "dock": "left"
   },
   "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_fallbacks": ["Menlo", "Monaco", ".ZedMono"],
   "buffer_line_height": { "custom": 1.1 },
   "cursor_blink": false,
   "ui_font_family": ".SystemUIFont",
