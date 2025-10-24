@@ -89,5 +89,16 @@
     "prisma": true,
     "graphql": true,
     "gitlab-ci-ls": true
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    }
   }
 }
