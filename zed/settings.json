@@ -106,7 +106,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Vercel Dark"
+    "dark": "Github Dark"
   },
   "auto_install_extensions": {
     "vscode-dark-polished": true,
@@ -117,7 +117,10 @@
     "dockerfile": true,
     "prisma": true,
     "graphql": true,
-    "gitlab-ci-ls": true
+    "gitlab-ci-ls": true,
+    "git-firefly": true,
+    "sql": true,
+    "nginx": true
   },
   "diagnostics": {
     "button": true,
