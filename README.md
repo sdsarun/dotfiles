@@ -4,7 +4,9 @@
 ```
 git clone https://github.com/sdsarun/dotfiles.git ~/.dotverse
 ```
-
+```
+git clone git@github.com:sdsarun/dotfiles.git ~/.dotverse
+```
 ## Symlink
 To create a symlink
 ```
