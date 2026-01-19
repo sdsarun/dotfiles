@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "current_line_highlight": "none",
   "agent_servers": {
     "codex": {
       "default_mode": "auto"
@@ -62,7 +63,7 @@
       }
     }
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "disable_ai": false,
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
@@ -105,8 +106,8 @@
   "buffer_font_size": 14.0,
   "theme": {
     "mode": "dark",
-    "light": "One Light",
-    "dark": "Github Dark"
+    "light": "Xcode Default Light",
+    "dark": "Fleet Dark"
   },
   "auto_install_extensions": {
     "vscode-dark-polished": true,
