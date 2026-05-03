@@ -1,0 +1,9 @@
+# Gram Extensions
+# Install manually via Extensions page using the git URL below.
+# Format: one git URL per line. Lines starting with '#' are ignored.
+
+# Example:
+# https://github.com/author/extension-name
+
+https://github.com/vscode-icons/vscode-icons-zed
+https://github.com/PyaeSoneAungRgn/github-zed-theme

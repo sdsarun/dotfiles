@@ -16,7 +16,12 @@ link_config() {
   local target="$2"
 
   mkdir -p "$(dirname "$target")"
-  ln -sf "$source" "$target"
+  if [[ -L "$target" && "$(readlink "$target")" == "$source" ]]; then
+    printf 'Already linked: %s → %s\n' "$source" "$target"
+  else
+    ln -sf "$source" "$target"
+    printf 'Linked: %s → %s\n' "$source" "$target"
+  fi
 }
 
 link_config "$DOTVERSE/zsh/.zshrc" "$HOME/.zshrc"
@@ -40,6 +45,7 @@ ensure_git_clone() {
 
   mkdir -p "$(dirname "$destination")"
   git clone "$repo_url" "$destination"
+  printf 'Cloned: %s → %s\n' "$label" "$destination"
 }
 
 setup_zsh_dependencies() {
@@ -64,15 +70,44 @@ setup_zsh_dependencies() {
 
 case "$(uname -s)" in
   Darwin|Linux)
-    ZED_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
-    link_config "$DOTVERSE/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
-    link_config "$DOTVERSE/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
+    GRAM_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/gram"
+    link_config "$DOTVERSE/gram/settings.jsonc" "$GRAM_CONFIG_DIR/settings.jsonc"
+    link_config "$DOTVERSE/gram/keymap.jsonc" "$GRAM_CONFIG_DIR/keymap.jsonc"
     ;;
   *)
-    printf 'Skipping Zed symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
+    printf 'Skipping Gram symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
     ;;
 esac
 
 setup_zsh_dependencies
 
 echo "Symlinks created successfully!"
+
+print_gram_extensions() {
+  local ext_file="$DOTVERSE/gram/extensions.txt"
+
+  if [[ ! -f "$ext_file" ]]; then
+    printf 'No Gram extensions file found at %s\n' "$ext_file" >&2
+    return
+  fi
+
+  local extensions=()
+  while IFS= read -r line; do
+    [[ "$line" =~ ^[[:space:]]*# ]] && continue
+    [[ -z "${line// }" ]] && continue
+    extensions+=("$line")
+  done < "$ext_file"
+
+  if [[ ${#extensions[@]} -eq 0 ]]; then
+    printf '\n[Gram] No extensions listed for manual install.\n'
+    return
+  fi
+
+  printf '\n[Gram] Install the following extensions manually via the Extensions page (Install from git URL):\n'
+  for ext in "${extensions[@]}"; do
+    printf '  • %s\n' "$ext"
+  done
+  printf '\n'
+}
+
+print_gram_extensions
