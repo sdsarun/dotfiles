@@ -3,6 +3,7 @@
   "auto_signature_help": false,
   "completion_menu_scrollbar": "auto",
   "restore_on_startup": "last_session",
+  "extend_comment_on_newline": false,
   "git_panel": {
     "tree_view": false,
     "status_style": "icon",
@@ -37,6 +38,8 @@
     },
   },
   "terminal": {
+    "font_weight": 400.0,
+    "font_size": 14.0,
     "toolbar": {
       "breadcrumbs": false,
     },
@@ -128,7 +131,7 @@
   "buffer_font_family": "Hack Nerd Font Mono",
   "ui_font_size": 14.0,
   "buffer_font_size": 15.0,
-  "theme": "Kanagawa Dragon",
+  "theme": "One Dark - Darkened",
   "formatter": {
     "external": {
       "command": "prettier",
