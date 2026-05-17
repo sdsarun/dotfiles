@@ -1,51 +1,51 @@
-// Gram keymap
+// Zed keymap
 //
-// For information on binding keys, see the Gram
-// documentation: gram://docs/key-bindings
+// For information on binding keys, see the Zed
+// documentation: zed://docs/key-bindings
 //
-// To see the default key bindings run `gram: open default keymap`
+// To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
       // "j k": "vim::NormalBefore"
-    },
+    }
   },
   {
     "bindings": {
-      "ctrl-j": "terminal_panel::ToggleFocus",
-    },
+      "ctrl-j": "terminal_panel::ToggleFocus"
+    }
   },
   {
     "bindings": {
-      "ctrl-k": "editor::ToggleFocus",
-    },
+      "ctrl-k": "editor::ToggleFocus"
+    }
   },
   {
     "context": "Editor",
     "bindings": {
-      "alt-shift-f": "editor::Format",
-    },
+      "alt-shift-f": "editor::Format"
+    }
   },
   {
     "context": "vim_mode == insert",
     "bindings": {
-      "ctrl-shift-space": "editor::ShowSignatureHelp",
-    },
+      "ctrl-shift-space": "editor::ShowSignatureHelp"
+    }
   },
   {
     "context": "Workspace",
     "bindings": {
-      "cmd-b": "workspace::ToggleRightDock",
-    },
+      "cmd-b": "workspace::ToggleRightDock"
+    }
   },
   {
     "context": "ProjectPanel && !Editor",
     "bindings": {
       "enter": "project_panel::Rename",
       "l": "project_panel::OpenPermanent",
-      "right": "project_panel::OpenPermanent",
-    },
-  },
+      "right": "project_panel::OpenPermanent"
+    }
+  }
 ]

@@ -70,12 +70,12 @@ setup_zsh_dependencies() {
 
 case "$(uname -s)" in
   Darwin|Linux)
-    GRAM_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/gram"
-    link_config "$DOTVERSE/gram/settings.jsonc" "$GRAM_CONFIG_DIR/settings.jsonc"
-    link_config "$DOTVERSE/gram/keymap.jsonc" "$GRAM_CONFIG_DIR/keymap.jsonc"
+    ZED_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
+    link_config "$DOTVERSE/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
+    link_config "$DOTVERSE/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
     ;;
   *)
-    printf 'Skipping Gram symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
+    printf 'Skipping Zed symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
     ;;
 esac
 
@@ -83,11 +83,11 @@ setup_zsh_dependencies
 
 echo "Symlinks created successfully!"
 
-print_gram_extensions() {
-  local ext_file="$DOTVERSE/gram/extensions.txt"
+print_zed_extensions() {
+  local ext_file="$DOTVERSE/zed/extensions.txt"
 
   if [[ ! -f "$ext_file" ]]; then
-    printf 'No Gram extensions file found at %s\n' "$ext_file" >&2
+    printf 'No Zed extensions file found at %s\n' "$ext_file" >&2
     return
   fi
 
@@ -99,15 +99,15 @@ print_gram_extensions() {
   done < "$ext_file"
 
   if [[ ${#extensions[@]} -eq 0 ]]; then
-    printf '\n[Gram] No extensions listed for manual install.\n'
+    printf '\n[Zed] No extensions listed for manual install.\n'
     return
   fi
 
-  printf '\n[Gram] Install the following extensions manually via the Extensions page (Install from git URL):\n'
+  printf '\n[Zed] Install the following extensions manually via the Extensions page (Install from git URL):\n'
   for ext in "${extensions[@]}"; do
     printf '  • %s\n' "$ext"
   done
   printf '\n'
 }
 
-print_gram_extensions
+print_zed_extensions
