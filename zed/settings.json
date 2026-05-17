@@ -134,4 +134,32 @@
     "light": "One Light",
     "dark": "Vercel Dark",
   },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "edit_predictions": {
+    "provider": "none",
+  },
+  "disable_ai": false,
+  "auto_install_extensions": {
+    "chawyehsu-vscode-icons": true,
+    "html": true,
+    "dockerfile": true,
+    "prisma": true,
+    "graphql": true,
+    "gitlab-ci-ls": true,
+    "git-firefly": true,
+    "sql": true,
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null,
+    },
+  },
 }
