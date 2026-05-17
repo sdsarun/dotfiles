@@ -82,32 +82,3 @@ esac
 setup_zsh_dependencies
 
 echo "Symlinks created successfully!"
-
-print_zed_extensions() {
-  local ext_file="$DOTVERSE/zed/extensions.txt"
-
-  if [[ ! -f "$ext_file" ]]; then
-    printf 'No Zed extensions file found at %s\n' "$ext_file" >&2
-    return
-  fi
-
-  local extensions=()
-  while IFS= read -r line; do
-    [[ "$line" =~ ^[[:space:]]*# ]] && continue
-    [[ -z "${line// }" ]] && continue
-    extensions+=("$line")
-  done < "$ext_file"
-
-  if [[ ${#extensions[@]} -eq 0 ]]; then
-    printf '\n[Zed] No extensions listed for manual install.\n'
-    return
-  fi
-
-  printf '\n[Zed] Install the following extensions manually via the Extensions page (Install from git URL):\n'
-  for ext in "${extensions[@]}"; do
-    printf '  • %s\n' "$ext"
-  done
-  printf '\n'
-}
-
-print_zed_extensions
