@@ -19,6 +19,9 @@ link_config() {
   if [[ -L "$target" && "$(readlink "$target")" == "$source" ]]; then
     printf 'Already linked: %s → %s\n' "$source" "$target"
   else
+    if [[ -d "$target" && ! -L "$target" ]]; then
+      rm -rf "$target"
+    fi
     ln -sf "$source" "$target"
     printf 'Linked: %s → %s\n' "$source" "$target"
   fi
@@ -73,6 +76,9 @@ case "$(uname -s)" in
     ZED_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
     link_config "$DOTVERSE/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
     link_config "$DOTVERSE/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
+
+    NVIM_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+    link_config "$DOTVERSE/nvim" "$NVIM_CONFIG_DIR"
     ;;
   *)
     printf 'Skipping Zed symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
