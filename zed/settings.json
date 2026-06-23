@@ -7,11 +7,19 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ui_font_weight": 400.0,
+  "semantic_tokens": "combined",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "ui_font_family": ".SystemUIFont",
+  "auto_indent_on_paste": true,
+  "auto_indent": "syntax_aware",
   "use_system_window_tabs": true,
   "completion_menu_scrollbar": "auto",
   "restore_on_startup": "last_session",
   "extend_comment_on_newline": false,
   "indent_guides": {
+    "line_width": 1,
     "background_coloring": "disabled",
     "active_line_width": 1,
     "coloring": "fixed",
@@ -46,6 +54,7 @@
     "status_style": "icon",
   },
   "project_panel": {
+    "entry_spacing": "standard",
     "hide_root": true,
     "git_status_indicator": true,
     "diagnostic_badges": true,
@@ -81,6 +90,8 @@
   "cursor_blink": false,
   "cursor_shape": "bar",
   "terminal": {
+    "shell": "system",
+    "font_family": ".ZedMono",
     "font_weight": 400,
     "font_size": 14,
     "toolbar": {
@@ -101,10 +112,21 @@
     "metrics": false,
   },
   "agent": {
+    "enable_feedback": false,
+    "profiles": {
+      "planner": {
+        "name": "planner",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {},
+      },
+    },
+    "default_profile": "write",
     "default_model": {
+      "effort": "xhigh",
       "provider": "copilot_chat",
-      "model": "gpt-4o",
-      "enable_thinking": false,
+      "model": "gpt-5.4-mini",
+      "enable_thinking": true,
     },
     "favorite_models": [
       {
@@ -114,25 +136,31 @@
       },
       {
         "provider": "copilot_chat",
-        "model": "claude-opus-4.7",
-        "enable_thinking": true,
-      },
-      {
-        "provider": "copilot_chat",
         "model": "claude-sonnet-4.6",
         "enable_thinking": true,
         "effort": "high",
       },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-opus-4.6",
+        "enable_thinking": true,
+        "effort": "high",
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "gpt-5.4-mini",
+        "enable_thinking": true,
+        "effort": "xhigh",
+      },
     ],
     "model_parameters": [],
   },
-  "ui_font_weight": 550,
-  "ui_font_size": 16,
-  "buffer_font_size": 16.0,
+  "ui_font_size": 14.0,
+  "buffer_font_size": 15.0,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Vercel Dark",
+    "dark": "Gitpod Dark"
   },
   "collaboration_panel": {
     "button": false,
@@ -140,7 +168,7 @@
   "edit_predictions": {
     "provider": "none",
   },
-  "disable_ai": false,
+  "disable_ai": true,
   "auto_install_extensions": {
     "chawyehsu-vscode-icons": true,
     "html": true,
