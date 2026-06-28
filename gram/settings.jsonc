@@ -197,16 +197,7 @@
     },
   },
   "theme": "0x96f Theme",
-  "auto_install_extensions": {
-    "chawyehsu-vscode-icons": true,
-    "html": true,
-    "dockerfile": true,
-    "prisma": true,
-    "graphql": true,
-    "gitlab-ci-ls": true,
-    "sql": true,
-  },
-  "diagnostics": {
+"diagnostics": {
     "button": true,
     "include_warnings": true,
     "inline": {
