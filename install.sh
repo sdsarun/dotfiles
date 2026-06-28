@@ -27,9 +27,26 @@ link_config() {
   fi
 }
 
+cleanup_deprecated() {
+  local target="$1"
+  local description="$2"
+
+  if [[ -L "$target" ]]; then
+    printf 'WARNING: Deprecated symlink detected: %s (%s is no longer managed)\n' "$target" "$description"
+    read -rp "Are you sure you want to remove this symlink? [y/N] " confirm
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+      rm "$target"
+      printf 'Removed: %s\n' "$target"
+    else
+      printf 'Skipped (kept): %s\n' "$target"
+    fi
+  fi
+}
+
+cleanup_deprecated "$HOME/.wezterm.lua" "wezterm"
+
 link_config "$DOTVERSE/zsh/.zshrc" "$HOME/.zshrc"
 link_config "$DOTVERSE/tmux/.tmux.conf" "$HOME/.tmux.conf"
-link_config "$DOTVERSE/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 
 ensure_git_clone() {
   local repo_url="$1"
