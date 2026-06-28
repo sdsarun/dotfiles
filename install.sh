@@ -14,8 +14,8 @@ done
 # ── Colors ────────────────────────────────────────────────────────────────────
 
 if [[ -t 1 ]]; then
-  BOLD='\033[1m'; DIM='\033[2m'; RESET='\033[0m'
-  CYAN='\033[36m'; GREEN='\033[32m'; YELLOW='\033[33m'
+  BOLD=$'\033[1m'; DIM=$'\033[2m'; RESET=$'\033[0m'
+  CYAN=$'\033[36m'; GREEN=$'\033[32m'; YELLOW=$'\033[33m'
 else
   BOLD=''; DIM=''; RESET=''; CYAN=''; GREEN=''; YELLOW=''
 fi
