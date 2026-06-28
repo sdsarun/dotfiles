@@ -7,13 +7,44 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "colorize_brackets": false,
+  "lsp_document_colors": "inlay",
+  "code_lens": "off",
+  "inlay_hints": {
+    "show_background": false,
+    "enabled": false
+  },
+  "show_whitespaces": "selection",
+  "always_treat_brackets_as_autoclosed": false,
+  "auto_indent": "syntax_aware",
+  "mouse_wheel_zoom": false,
+  "scroll_sensitivity": 1.0,
+  "cli_default_open_behavior": "new_window",
+  "buffer_font_size": 14.0,
+  "ui_font_size": 14.0,
+  "agent_ui_font_size": 15.0,
+  "show_edit_predictions": true,
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "auto",
+        "model": "claude-sonnet-4-6",
+      },
+      "type": "registry",
+    },
+  },
   "ui_font_weight": 400.0,
   "semantic_tokens": "combined",
   "buffer_font_weight": 400.0,
-  "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_family": "Menlo",
   "ui_font_family": ".SystemUIFont",
   "auto_indent_on_paste": true,
-  "auto_indent": "syntax_aware",
   "use_system_window_tabs": true,
   "completion_menu_scrollbar": "auto",
   "restore_on_startup": "last_session",
@@ -27,9 +58,11 @@
   },
   "hard_tabs": false,
   "toolbar": {
+    "selections_menu": true,
+    "quick_actions": true,
+    "breadcrumbs": true,
     "code_actions": false,
   },
-  "auto_signature_help": false,
   "show_signature_help_after_edits": true,
   "redact_private_values": false,
   "relative_line_numbers": "enabled",
@@ -38,6 +71,7 @@
   },
   "vim_mode": true,
   "vim": {
+    "use_smartcase_find": false,
     "toggle_relative_line_numbers": false,
     "use_system_clipboard": "never",
   },
@@ -50,10 +84,14 @@
     "show_active_file": false,
   },
   "git_panel": {
+    "dock": "right",
+    "sort_by_path": false,
+    "tree_view": false,
     "file_icons": false,
     "status_style": "icon",
   },
   "project_panel": {
+    "dock": "right",
     "entry_spacing": "standard",
     "hide_root": true,
     "git_status_indicator": true,
@@ -112,6 +150,9 @@
     "metrics": false,
   },
   "agent": {
+    "dock": "left",
+    "show_turn_stats": true,
+    "single_file_review": false,
     "enable_feedback": false,
     "profiles": {
       "planner": {
@@ -155,20 +196,17 @@
     ],
     "model_parameters": [],
   },
-  "ui_font_size": 14.0,
-  "buffer_font_size": 15.0,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Gitpod Dark"
-  },
+  "theme": "Gruvbox Dark",
   "collaboration_panel": {
+    "dock": "right",
     "button": false,
   },
   "edit_predictions": {
+    "mode": "eager",
+    "allow_data_collection": "no",
     "provider": "none",
   },
-  "disable_ai": true,
+  "disable_ai": false,
   "auto_install_extensions": {
     "chawyehsu-vscode-icons": true,
     "html": true,
