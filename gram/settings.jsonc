@@ -15,6 +15,12 @@
     "allow_binary_download": true,
   },
   "lsp": {
+    "bash-language-server": {
+      "binary": {
+        "allow_binary_download": true
+      },
+      "enable_lsp_tasks": true
+    },
     "oxfmt": {
       "binary": {
         "allow_binary_download": true
