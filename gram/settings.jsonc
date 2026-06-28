@@ -129,7 +129,7 @@
     "toggle_relative_line_numbers": false,
     "use_system_clipboard": "never",
   },
-  "icon_theme": "VSCode Icons for Zed (Dark)",
+  // "icon_theme": "VSCode Icons for Zed (Dark)",
   "status_bar": {
     "position": "bottom",
     "active_encoding_button": "non_utf8",
