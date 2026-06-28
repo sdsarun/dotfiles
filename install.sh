@@ -2,6 +2,33 @@
 set -euo pipefail
 
 DOTVERSE="${DOTVERSE:-$HOME/.dotverse}"
+CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+# ── Symlink table ─────────────────────────────────────────────────────────────
+# Format: "repo_subpath|target_path"
+# To add a new tool: append one line to the right array, nothing else needed.
+
+SYMLINKS=(
+  "zsh/.zshrc|$HOME/.zshrc"
+  "tmux/.tmux.conf|$HOME/.tmux.conf"
+)
+
+DARWIN_SYMLINKS=(
+  "zed/settings.json|$CONFIG/zed/settings.json"
+  "zed/keymap.json|$CONFIG/zed/keymap.json"
+  "nvim|$CONFIG/nvim"
+  "ghostty/config|$CONFIG/ghostty/config"
+  "gram/settings.jsonc|$CONFIG/gram/settings.jsonc"
+  "gram/keymap.jsonc|$CONFIG/gram/keymap.jsonc"
+)
+
+# Tools that were removed — prompts user to clean up stale symlinks.
+# Format: "target_path|description"
+DEPRECATED_SYMLINKS=(
+  "$HOME/.wezterm.lua|wezterm"
+)
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
 expand_path() {
   local path="$1"
@@ -43,11 +70,6 @@ cleanup_deprecated() {
   fi
 }
 
-cleanup_deprecated "$HOME/.wezterm.lua" "wezterm"
-
-link_config "$DOTVERSE/zsh/.zshrc" "$HOME/.zshrc"
-link_config "$DOTVERSE/tmux/.tmux.conf" "$HOME/.tmux.conf"
-
 ensure_git_clone() {
   local repo_url="$1"
   local destination="$2"
@@ -88,17 +110,26 @@ setup_zsh_dependencies() {
   ensure_git_clone "https://github.com/zsh-users/zsh-autosuggestions.git" "$autosuggestions_dir" "zsh-autosuggestions plugin"
 }
 
+# ── Deprecated cleanup ────────────────────────────────────────────────────────
+
+for entry in "${DEPRECATED_SYMLINKS[@]}"; do
+  cleanup_deprecated "${entry%%|*}" "${entry##*|}"
+done
+
+# ── Symlinks ──────────────────────────────────────────────────────────────────
+
+for entry in "${SYMLINKS[@]}"; do
+  link_config "$DOTVERSE/${entry%%|*}" "${entry##*|}"
+done
+
 case "$(uname -s)" in
   Darwin|Linux)
-    ZED_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zed"
-    link_config "$DOTVERSE/zed/settings.json" "$ZED_CONFIG_DIR/settings.json"
-    link_config "$DOTVERSE/zed/keymap.json" "$ZED_CONFIG_DIR/keymap.json"
-
-    NVIM_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
-    link_config "$DOTVERSE/nvim" "$NVIM_CONFIG_DIR"
+    for entry in "${DARWIN_SYMLINKS[@]}"; do
+      link_config "$DOTVERSE/${entry%%|*}" "${entry##*|}"
+    done
     ;;
   *)
-    printf 'Skipping Zed symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
+    printf 'Skipping platform symlinks: unsupported platform (%s)\n' "$(uname -s)" >&2
     ;;
 esac
 
