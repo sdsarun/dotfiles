@@ -6,3 +6,4 @@ font-thicken = true
 font-thicken-strength = 25
 adjust-cell-height = -5%
 macos-option-as-alt = true
+auto-update = off
