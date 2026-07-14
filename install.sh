@@ -27,6 +27,7 @@ fi
 SYMLINKS=(
   "zsh/.zshrc|$HOME/.zshrc"
   "tmux/.tmux.conf|$HOME/.tmux.conf"
+  "wezterm/.wezterm.lua|$HOME/.wezterm.lua"
 )
 
 DARWIN_SYMLINKS=(
@@ -40,9 +41,7 @@ DARWIN_SYMLINKS=(
 
 # Tools that were removed — prompts user to clean up stale symlinks.
 # Format: "target_path|description"
-DEPRECATED_SYMLINKS=(
-  "$HOME/.wezterm.lua|wezterm"
-)
+DEPRECATED_SYMLINKS=()
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -249,9 +248,11 @@ printf '  %sdotverse%s  setup\n' "$BOLD" "$RESET"
 printf '\n'
 
 # Deprecated cleanup
-for entry in "${DEPRECATED_SYMLINKS[@]}"; do
-  cleanup_deprecated "${entry%%|*}" "${entry##*|}"
-done
+if ((${#DEPRECATED_SYMLINKS[@]})); then
+  for entry in "${DEPRECATED_SYMLINKS[@]}"; do
+    cleanup_deprecated "${entry%%|*}" "${entry##*|}"
+  done
+fi
 
 # Build list for current platform
 all_entries=("${SYMLINKS[@]}")
