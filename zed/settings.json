@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "current_line_highlight": "none",
   "session": {
     "trust_all_worktrees": true
   },
@@ -23,7 +24,7 @@
   "mouse_wheel_zoom": false,
   "scroll_sensitivity": 1.0,
   "cli_default_open_behavior": "new_window",
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 16.0,
   "ui_font_size": 14.0,
   "agent_ui_font_size": 15.0,
   "show_edit_predictions": true,
@@ -42,7 +43,7 @@
   "ui_font_weight": 400.0,
   "semantic_tokens": "combined",
   "buffer_font_weight": 400.0,
-  "buffer_font_family": "Menlo",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   "ui_font_family": ".SystemUIFont",
   "auto_indent_on_paste": true,
   "use_system_window_tabs": true,
@@ -122,7 +123,7 @@
     "enabled": true,
   },
   "buffer_line_height": {
-    "custom": 1.1,
+    "custom": 1.0499999523162842,
   },
   "text_rendering_mode": "platform_default",
   "cursor_blink": false,
@@ -196,7 +197,7 @@
     ],
     "model_parameters": [],
   },
-  "theme": "Gruvbox Dark",
+  "theme": "Jellybeans",
   "collaboration_panel": {
     "dock": "right",
     "button": false,
