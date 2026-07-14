@@ -1,6 +1,8 @@
 return {
   {
     "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.o.background = "dark"
 
@@ -28,9 +30,19 @@ return {
       })
     end,
   },
+  -- {
+  --   -- "ellisonleao/gruvbox.nvim",
+  --   -- "arturgoms/moonbow.nvim",
+  --   -- "nickkadutskyi/jb.nvim",
+  --   -- "projekt0n/github-nvim-theme",
+  --   -- lazy = false,
+  --   -- priority = 1000,
+  -- },
   {
     "LazyVim/LazyVim",
     opts = {
+      -- colorscheme = "github_dark",
+      -- colorscheme = "gruvbox",
       colorscheme = "vscode",
     },
   },
