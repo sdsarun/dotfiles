@@ -1,11 +1,3 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
   "current_line_highlight": "none",
   "session": {
@@ -24,12 +16,20 @@
   "mouse_wheel_zoom": false,
   "scroll_sensitivity": 1.0,
   "cli_default_open_behavior": "new_window",
-  "buffer_font_size": 16.0,
-  "ui_font_size": 14.0,
+  "buffer_font_size": 15.0,
+  "ui_font_size": 15.0,
   "agent_ui_font_size": 15.0,
   "show_edit_predictions": true,
   "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    },
     "github-copilot-cli": {
+      "default_config_options": {
+        "allow_all": "on",
+        "agent": "askmebro",
+        "model": "gpt-5.4-mini"
+      },
       "type": "registry"
     },
     "claude-acp": {
@@ -43,7 +43,7 @@
   "ui_font_weight": 400.0,
   "semantic_tokens": "combined",
   "buffer_font_weight": 400.0,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "CommitMono Nerd Font Mono",
   "ui_font_family": ".SystemUIFont",
   "auto_indent_on_paste": true,
   "use_system_window_tabs": true,
@@ -76,17 +76,12 @@
     "toggle_relative_line_numbers": false,
     "use_system_clipboard": "never",
   },
-  "icon_theme": {
-    "mode": "light",
-    "light": "VSCode Icons",
-    "dark": "VSCode Icons",
-  },
+  "icon_theme": "VSCode Icons",
   "status_bar": {
     "show_active_file": false,
   },
   "git_panel": {
     "dock": "right",
-    "sort_by_path": false,
     "tree_view": false,
     "file_icons": false,
     "status_style": "icon",
@@ -197,7 +192,7 @@
     ],
     "model_parameters": [],
   },
-  "theme": "Jellybeans",
+  "theme": "Fleet Dark",
   "collaboration_panel": {
     "dock": "right",
     "button": false,
