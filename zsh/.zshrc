@@ -38,31 +38,23 @@ export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
-# go
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-
-# ############## CUSTOM FUNCTIONS ##############
-# Ngrok
-if command -v ngrok &>/dev/null; then
-	eval "$(ngrok completion)"
-fi
-
-# Docker
-fpath=("$HOME/.docker/completions" $fpath)
-autoload -Uz compinit
-compinit
-
 # Android Studio
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# ############## COMMANDS ##############
+# Docker
+fpath=("$HOME/.docker/completions" $fpath)
+autoload -Uz compinit
+compinit
+
+# Ngrok
+if command -v ngrok &>/dev/null; then
+	eval "$(ngrok completion)"
+fi
+
+# mise
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
