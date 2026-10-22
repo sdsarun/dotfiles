@@ -7,6 +7,7 @@ plugins=(
   docker
   docker-compose
   zsh-autosuggestions
+  kubectl
 )
 
 ZSH_DISABLE_COMPFIX=true
