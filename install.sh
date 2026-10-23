@@ -33,17 +33,24 @@ SYMLINKS=(
 )
 
 DARWIN_SYMLINKS=(
-  "zed/settings.json|$CONFIG/zed/settings.json"
-  "zed/keymap.json|$CONFIG/zed/keymap.json"
   "nvim|$CONFIG/nvim"
-  "ghostty/config|$CONFIG/ghostty/config"
-  "gram/settings.jsonc|$CONFIG/gram/settings.jsonc"
-  "gram/keymap.jsonc|$CONFIG/gram/keymap.jsonc"
+)
+
+# Ghostty reads config.ghostty from Application Support on macOS (loaded after
+# the XDG path, so it would override it) and from XDG on Linux.
+MACOS_SYMLINKS=(
+  "ghostty/config.ghostty|$HOME/Library/Application Support/com.mitchellh.ghostty/config.ghostty"
+)
+
+LINUX_SYMLINKS=(
+  "ghostty/config.ghostty|$CONFIG/ghostty/config.ghostty"
 )
 
 # Tools that were removed — prompts user to clean up stale symlinks.
 # Format: "target_path|description"
-DEPRECATED_SYMLINKS=()
+DEPRECATED_SYMLINKS=(
+  "$CONFIG/ghostty/config|Ghostty legacy config path (now config.ghostty)"
+)
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -773,7 +780,8 @@ fi
 # Build list for current platform
 all_entries=("${SYMLINKS[@]}")
 case "$(uname -s)" in
-  Darwin|Linux) all_entries+=("${DARWIN_SYMLINKS[@]}") ;;
+  Darwin) all_entries+=("${DARWIN_SYMLINKS[@]}" "${MACOS_SYMLINKS[@]}") ;;
+  Linux) all_entries+=("${DARWIN_SYMLINKS[@]}" "${LINUX_SYMLINKS[@]}") ;;
   *) printf '  Skipping platform symlinks: unsupported platform (%s)\n\n' "$(uname -s)" >&2 ;;
 esac
 
