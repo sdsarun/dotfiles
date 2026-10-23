@@ -17,7 +17,6 @@ source $ZSH/oh-my-zsh.sh
 # ############## ALIAS ##############
 alias python="python3"
 alias pip="pip3"
-alias lzd="lazydocker"
 alias lzg="lazygit"
 alias vi="nvim"
 
