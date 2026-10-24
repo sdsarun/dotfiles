@@ -9,3 +9,5 @@ macos-option-as-alt = true
 auto-update = off
 shell-integration-features = ssh-env,ssh-terminfo
 macos-titlebar-style = tabs
+mouse-scroll-multiplier = precision:0.5,discrete:1
+bell-features = no-attention
