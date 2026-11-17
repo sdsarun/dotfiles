@@ -128,7 +128,7 @@ safe("theme", function()
     WinSeparator = { fg = "#444444" }, VertSplit = { fg = "#444444" },
     Pmenu = { fg = "#cccccc", bg = c.popup }, PmenuSel = { fg = "#ffffff", bg = c.popsel },
     PmenuSbar = { bg = "#2d2d30" }, PmenuThumb = { bg = "#5a5a5a" }, WildMenu = { bg = c.popsel },
-    StatusLine = { fg = "#ffffff", bg = "#007acc" }, StatusLineNC = { fg = "#cccccc", bg = "#333333" },
+    StatusLine = { fg = "#cccccc", bg = "#181818" }, StatusLineNC = { fg = "#6e7681", bg = "#181818" },
     TabLine = { fg = "#969696", bg = "#2d2d2d" }, TabLineSel = { fg = "#ffffff", bold = true },
     TabLineFill = { bg = c.popup },
     Directory = { fg = c.keyword }, Title = { fg = c.keyword, bold = true },
