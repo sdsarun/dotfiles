@@ -77,7 +77,7 @@ end)
 safe("options", function()
   local o = {
     number = true, relativenumber = true, signcolumn = "yes", termguicolors = true,
-    ignorecase = true, smartcase = true, undofile = true, confirm = true, mouse = "a",
+    ignorecase = true, smartcase = true, undofile = true, confirm = true, mouse = "a", clipboard = "",
     splitbelow = true, splitright = true, splitkeep = "screen",
     scrolloff = 4, sidescrolloff = 8, smoothscroll = true, jumpoptions = "view", virtualedit = "block",
     expandtab = true, shiftwidth = 2, tabstop = 2, softtabstop = -1, shiftround = true, smartindent = true,
@@ -94,12 +94,6 @@ safe("options", function()
   -- fuzzy cmdline completion in a popup menu
   opt_append("wildoptions", "pum")
   opt_append("wildoptions", "fuzzy")
-  -- the system clipboard is looked up lazily, and only if a provider exists (not on a bare server)
-  vim.schedule(function()
-    if vim.fn.has("clipboard") == 1 then
-      opt("clipboard", "unnamedplus")
-    end
-  end)
 end)
 
 -- ── theme: VS Code Dark+ ─────────────────────────────────────────────────────────────────────────────
@@ -512,6 +506,11 @@ safe("autocmds", function()
 
   autocmd("TextYankPost", {
     callback = function()
+      local event = vim.v.event
+      -- Copy default yanks to the system clipboard and honor explicit registers.
+      if event.operator == "y" and (event.regname == "" or event.regname == '"') and vim.fn.has("clipboard") == 1 then
+        vim.fn.setreg("+", event.regcontents, event.regtype)
+      end
       local hl = vim.hl or vim.highlight
       if hl and hl.on_yank then
         pcall(hl.on_yank)
